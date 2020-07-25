@@ -1,20 +1,34 @@
 package owmjp
 
 import (
-	"fmt"
 	"net/url"
+	"os"
 	"testing"
+
+	"github.com/joho/godotenv"
 )
 
 func TestCurrentWeather(t *testing.T) {
-	api := NewAPIWithAPIKey("d1dcf4b83f0b4d9a5e0dbc0a059028a2")
+	godotenv.Load("envfiles/.env")
+	api := NewAPIWithKey(os.Getenv("OWM_KEY"))
 
 	v := url.Values{}
 	v.Set("units", "metric")
 
-	weather, err := api.GetCurrentWeatherData("Tokyo", v)
+	_, err := api.GetCurrentWeatherData("Tokyo", v)
 	if err != nil {
 		t.Fatal(err)
 	}
-	fmt.Println(weather)
+}
+
+func TestForecast(t *testing.T) {
+	godotenv.Load("envfiles/.env")
+	api := NewAPIWithKey(os.Getenv("OWM_KEY"))
+	v := url.Values{}
+	v.Set("units", "metric")
+
+	_, err := api.GetForecastData("Tokyo", v)
+	if err != nil {
+		t.Fatal(err)
+	}
 }

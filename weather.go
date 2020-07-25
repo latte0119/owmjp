@@ -36,7 +36,8 @@ type Weather struct {
 		Snow1h float64 `json:"snow.1h"`
 		Snow3h float64 `json:"snow.3h"`
 	} `json:"snow"`
-	Dt   int    `json:"dt"`
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	Dt    int    `json:"dt"`
+	DtTxt string `json:"dt_txt"`
+	ID    int    `json:"id"`
+	Name  string `json:"name"`
 }
