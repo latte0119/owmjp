@@ -27,7 +27,7 @@ func NewAPI() *API {
 	return c
 }
 
-func NewAPIWithAPIKey(_apiKey string) *API {
+func NewAPIWithKey(_apiKey string) *API {
 	c := NewAPI()
 	c.APIKey = _apiKey
 	return c
