@@ -45,19 +45,19 @@ type Weather struct {
 }
 
 func (w Weather) MainJP() (string, error) {
-	id := w.ID
-	if id == 0 {
+	if len(w.Weather) == 0 {
 		return "", errors.New("Error : ID is undefined")
 	}
+	id := w.Weather[0].ID
 
 	switch {
 	case 200 <= id && id < 300:
 		return "雷雨", nil
 	case 300 <= id && id < 400:
 		return "霧雨", nil
-	case 400 <= id && id < 500:
-		return "雨", nil
 	case 500 <= id && id < 600:
+		return "雨", nil
+	case 600 <= id && id < 700:
 		return "雪", nil
 	case id == 701:
 		return "靄", nil

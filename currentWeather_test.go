@@ -4,12 +4,10 @@ import (
 	"net/url"
 	"os"
 	"testing"
-
-	"github.com/joho/godotenv"
 )
 
 func TestCurrentWeather(t *testing.T) {
-	godotenv.Load("envfiles/.env")
+	Init()
 	api := NewAPIWithKey(os.Getenv("OWM_KEY"))
 
 	v := url.Values{}
@@ -22,7 +20,7 @@ func TestCurrentWeather(t *testing.T) {
 }
 
 func TestForecast(t *testing.T) {
-	godotenv.Load("envfiles/.env")
+	Init()
 	api := NewAPIWithKey(os.Getenv("OWM_KEY"))
 	v := url.Values{}
 	v.Set("units", "metric")
