@@ -87,3 +87,59 @@ func (w Weather) MainJP() (string, error) {
 		return "", errors.New("Error : ID is invalid")
 	}
 }
+
+func (w Weather) Emoji() (string, error) {
+	if len(w.Weather) == 0 {
+		return "", errors.New("Error : icon is undefined")
+	}
+	icon := w.Weather[0].Icon
+
+	switch icon {
+	case "01d":
+		return "☀", nil
+	case "01n":
+		return "🌙", nil
+
+	case "02d":
+		return "🌤", nil
+	case "02n":
+		return "🌤", nil
+
+	case "03d":
+		return "🌥", nil
+	case "03n":
+		return "🌥", nil
+	case "04d":
+		return "☁", nil
+	case "04n":
+		return "☁", nil
+
+	case "09d":
+		return "🌧", nil
+	case "09n":
+		return "🌧", nil
+
+	case "10d":
+		return "🌧", nil
+	case "10n":
+		return "🌧", nil
+
+	case "11d":
+		return "⛈", nil
+	case "11n":
+		return "⛈", nil
+
+	case "13d":
+		return "❄", nil
+	case "13n":
+		return "❄", nil
+
+	case "50d":
+		return "🌫", nil
+	case "50n":
+		return "🌫", nil
+
+	default:
+		return "", errors.New("Error : invalid icon")
+	}
+}
